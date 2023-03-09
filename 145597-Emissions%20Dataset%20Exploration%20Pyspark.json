@@ -1,7 +1,107 @@
 {
   "paragraphs": [
     {
+      "text": "from pyspark.sql import SparkSession\nfrom datetime import date, datetime, timedelta\n\nspark \u003d SparkSession.builder \\\n      .master(\"local[1]\") \\\n      .appName(\"SparkByExamples.com\") \\\n      .getOrCreate() \n      \n      \ndata \u003d [(\u0027James\u0027,\u0027\u0027,\u0027Smith\u0027,\u00271991-04-01\u0027,\u0027M\u0027,3000),\n  (\u0027Michael\u0027,\u0027Rose\u0027,\u0027\u0027,\u00272000-05-19\u0027,\u0027M\u0027,4000),\n  (\u0027Robert\u0027,\u0027\u0027,\u0027Williams\u0027,\u00271978-09-05\u0027,\u0027M\u0027,4000),\n  (\u0027Maria\u0027,\u0027Anne\u0027,\u0027Jones\u0027,\u00271967-12-01\u0027,\u0027F\u0027,4000),\n  (\u0027Jen\u0027,\u0027Mary\u0027,\u0027Brown\u0027,\u00271980-02-17\u0027,\u0027F\u0027,-1)\n]\n\ncolumns \u003d [\"firstname\",\"middlename\",\"lastname\",\"dob\",\"gender\",\"salary\"]\ndf \u003d spark.createDataFrame(data\u003ddata, schema \u003d columns)\n\ndf.show()",
+      "user": "thippeshp@qubole.com",
+      "dateUpdated": "Mar 9, 2023 3:21:41 PM",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "hideControlBar": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------+----------+--------+----------+------+------+\n|firstname|middlename|lastname|       dob|gender|salary|\n+---------+----------+--------+----------+------+------+\n|    James|          |   Smith|1991-04-01|     M|  3000|\n|  Michael|      Rose|        |2000-05-19|     M|  4000|\n|   Robert|          |Williams|1978-09-05|     M|  4000|\n|    Maria|      Anne|   Jones|1967-12-01|     F|  4000|\n|      Jen|      Mary|   Brown|1980-02-17|     F|    -1|\n+---------+----------+--------+----------+------+------+\n\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://us.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.0.0.254%3A8088%2Fproxy%2Fapplication_1678373321898_0001/jobs/job?spark\u003dtrue\u0026id\u003d6\u0026clusterInst\u003d5696319",
+            "https://us.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.0.0.254%3A8088%2Fproxy%2Fapplication_1678373321898_0001/jobs/job?spark\u003dtrue\u0026id\u003d7\u0026clusterInst\u003d5696319"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "paragraphProgress": {
+        "jobs": [
+          {
+            "id": 6,
+            "jobUrl": "https://us.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.0.0.254%3A8088%2Fproxy%2Fapplication_1678373321898_0001/jobs/job?spark\u003dtrue\u0026id\u003d6\u0026clusterInst\u003d5696319",
+            "numTasks": 1,
+            "numCompletedTasks": 1,
+            "stages": [
+              {
+                "id": 6,
+                "completed": true,
+                "status": "Completed",
+                "stageUrl": "https://us.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.0.0.254%3A8088%2Fproxy%2Fapplication_1678373321898_0001/stages/stage/?id\u003d6\u0026attempt\u003d0\u0026clusterInst\u003d5696319",
+                "numCompleteTasks": 1,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 7,
+            "jobUrl": "https://us.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.0.0.254%3A8088%2Fproxy%2Fapplication_1678373321898_0001/jobs/job?spark\u003dtrue\u0026id\u003d7\u0026clusterInst\u003d5696319",
+            "numTasks": 1,
+            "numCompletedTasks": 1,
+            "stages": [
+              {
+                "id": 7,
+                "completed": true,
+                "status": "Completed",
+                "stageUrl": "https://us.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.0.0.254%3A8088%2Fproxy%2Fapplication_1678373321898_0001/stages/stage/?id\u003d7\u0026attempt\u003d0\u0026clusterInst\u003d5696319",
+                "numCompleteTasks": 1,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1
+              }
+            ],
+            "status": "Success"
+          }
+        ],
+        "numCompletedTasks": 2,
+        "numTasks": 2,
+        "truncated": false
+      },
+      "apps": [],
+      "version": "v1",
+      "jobName": "paragraph_1678374781921_1536754177",
+      "id": "20230309-151301_2002731001_q_TDQSFQBUHB1678374777",
+      "dateCreated": "Mar 9, 2023 3:12:57 PM",
+      "dateSubmitted": "Mar 9, 2023 3:39:29 PM",
+      "dateStarted": "Mar 9, 2023 3:39:29 PM",
+      "dateFinished": "Mar 9, 2023 3:39:32 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
       "text": "",
+      "user": "thippeshp@qubole.com",
       "config": {},
       "settings": {
         "params": {},
@@ -9,25 +109,27 @@
       },
       "apps": [],
       "version": "v0",
-      "jobName": "paragraph_1678083269592_1258503252",
-      "id": "20230306-061429_854640828_q_17SZVDE7X21678083139",
-      "dateCreated": "Mar 6, 2023 6:12:19 AM",
+      "jobName": "paragraph_1678374823283_856731895",
+      "id": "20230309-151343_1253765022_q_TDQSFQBUHB1678374777",
+      "dateCreated": "Mar 9, 2023 3:13:43 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 1000
     }
   ],
-  "name": "test",
-  "id": "17SZVDE7X21678083139",
+  "name": "test-devops",
+  "id": "TDQSFQBUHB1678374777",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
   "config": {
+    "isZeppelinNotebookCronEnable": false,
     "isDashboard": false,
-    "defaultLang": "pyspark",
-    "isZeppelinNotebookCronEnable": false
+    "defaultLang": "pyspark"
   },
-  "info": {
-    "runAllInProgress": false
-  },
+  "info": {},
   "source": "FCN"
 }
